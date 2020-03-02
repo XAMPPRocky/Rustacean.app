@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    var preferencesWindow: NSWindowController? = nil
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -20,19 +21,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func createLogo() {
-        guard let button = statusItem.button else { return }
-        button.image = NSImage(named: NSImage.Name("status-logo"))
-        guard let logo = NSImage(named: NSImage.Name("status-logo")) else { return }
+        let logo = NSImage(named: NSImage.Name("status-logo"))!
 
         let resizedLogo = NSImage(size: NSSize(width: 22, height: 22), flipped: false) { (dstRect) -> Bool in
             logo.draw(in: dstRect)
             return true
         }
-        //button.action = #selector(printQuote(_:))
-        button.image = resizedLogo
+        
+        statusItem.button!.image = resizedLogo
+        statusItem.button!.action = #selector(createMenu)
     }
 
-    func createMenu() {
+    @objc func createMenu() {
         let menu = NSMenu()
 
         menu.addItem(NSMenuItem(title: "Preferences", action: #selector(showPreferences), keyEquivalent: "p"))
@@ -47,9 +47,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func showPreferences() {
+        preferencesWindow?.close()
+        NSApp.activate(ignoringOtherApps: true)
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateController(withIdentifier: "preferencesWindow") as! NSWindowController
-        controller.showWindow(self)
+        preferencesWindow = (storyboard.instantiateController(withIdentifier: "preferencesWindow") as! NSWindowController)
+        preferencesWindow?.window?.center()
+        preferencesWindow?.window?.collectionBehavior = .moveToActiveSpace
+        preferencesWindow!.window?.makeKeyAndOrderFront(nil)
+        preferencesWindow?.window?.orderFrontRegardless()
+
+        preferencesWindow!.showWindow(self)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
