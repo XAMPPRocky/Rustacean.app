@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E58A1A31240D3C8100367963 /* Toml in Frameworks */ = {isa = PBXBuildFile; productRef = E58A1A30240D3C8100367963 /* Toml */; };
 		E5A6735A240C758D002B8301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A67359240C758D002B8301 /* AppDelegate.swift */; };
 		E5A6735E240C7590002B8301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5A6735D240C7590002B8301 /* Assets.xcassets */; };
 		E5A67361240C7590002B8301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5A6735F240C7590002B8301 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58A1A31240D3C8100367963 /* Toml in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +78,9 @@
 			dependencies = (
 			);
 			name = Rust;
+			packageProductDependencies = (
+				E58A1A30240D3C8100367963 /* Toml */,
+			);
 			productName = Rust;
 			productReference = E5A67356240C758D002B8301 /* Rust.app */;
 			productType = "com.apple.product-type.application";
@@ -104,6 +109,9 @@
 				Base,
 			);
 			mainGroup = E5A6734D240C758D002B8301;
+			packageReferences = (
+				E58A1A2F240D3C8100367963 /* XCRemoteSwiftPackageReference "swift-toml" */,
+			);
 			productRefGroup = E5A67357240C758D002B8301 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -323,6 +331,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E58A1A2F240D3C8100367963 /* XCRemoteSwiftPackageReference "swift-toml" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:jdfergason/swift-toml.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E58A1A30240D3C8100367963 /* Toml */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E58A1A2F240D3C8100367963 /* XCRemoteSwiftPackageReference "swift-toml" */;
+			productName = Toml;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5A6734E240C758D002B8301 /* Project object */;
 }

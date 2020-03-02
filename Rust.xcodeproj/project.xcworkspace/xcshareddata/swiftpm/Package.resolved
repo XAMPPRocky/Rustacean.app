@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Toml",
+        "repositoryURL": "git@github.com:jdfergason/swift-toml.git",
+        "state": {
+          "branch": null,
+          "revision": "f4a3d9fbd94a855d6f85989c7e4c29e0ad75999c",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
