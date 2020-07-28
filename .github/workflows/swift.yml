@@ -1,0 +1,17 @@
+name: Swift
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: sersoft-gmbh/xcodebuild-action@v1
+      with:
+        project: Rust.xcodeproj
+        scheme: Rust
+        destination: platform=macOS
+        action: test
