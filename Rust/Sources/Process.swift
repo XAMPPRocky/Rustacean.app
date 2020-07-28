@@ -12,14 +12,15 @@ fileprivate func launchProcess(tool: String? = "rustup", channel: ToolchainChann
         args.insert("+\(channel.slug)", at: 0)
     }
 
-    environment["RUSTUP_HOME"] = try! rustupHome().path
-    environment["CARGO_HOME"] = try! cargoHome().path
+    environment["RUSTUP_HOME"] = rustupHome().path
+    environment["CARGO_HOME"] = cargoHome().path
     environment["RUSTUP_FORCE_ARG0"] = tool
+    environment["RUSTUP_INIT_SKIP_SUDO_CHECK"] = "1"
 
     let url: URL!
     switch tool {
     case .some("rustc"):
-        url = try! rustcUrl()
+        url =  rustcUrl()
         break
     default:
         url = rustupUrl()
@@ -29,36 +30,47 @@ fileprivate func launchProcess(tool: String? = "rustup", channel: ToolchainChann
     process.environment = environment
     process.arguments = args
     process.standardOutput = pipe
+    process.standardError = pipe
     return process
 }
 
 extension Process {
-    static func outputRustup(_ tool: String? = "rustup", _ channel: ToolchainChannel?, _ args: [String], callback: @escaping (String) -> ()) {
+    /// Runs rustup in a asynchronous manner, calling `handler` on each line returned from the process, and then runs `finally` once the process has been terminated, with rustup's status code.
+    static func handleRustup(_ tool: String? = "rustup", _ channel: ToolchainChannel?, _ args: [String], handler: @escaping (String) -> (), finally: @escaping (Int32) -> ()) {
         DispatchQueue.global().async {
             let pipe = Pipe()
-            var bigOutputString: String = ""
 
             pipe.fileHandleForReading.readabilityHandler = { (fileHandle) -> Void in
                 let availableData = fileHandle.availableData
-                let newOutput = String.init(data: availableData, encoding: .utf8)
-                bigOutputString.append(newOutput!)
-                print("\(newOutput!)")
-                // Display the new output appropriately in a NSTextView for example
+                
+                if !availableData.isEmpty {
+                    let newOutput = String.init(data: availableData, encoding: .utf8)!
+                    handler(newOutput)
+                    #if DEBUG
+                        print(newOutput)
+                    #endif
+                }
 
             }
 
             let process = launchProcess(tool: tool, channel: channel, args: args, pipe: pipe)
-            let identifier = process.processIdentifier
-            
             process.launch()
             process.waitUntilExit()
-            PROCESS_QUEUE[identifier] = process
+            finally(process.terminationStatus)
+        }
+    }
+    
+    /// Same as `handleRustup` except that it waits for whole output to be available first.
+    static func outputRustup(_ tool: String? = "rustup", _ channel: ToolchainChannel?, _ args: [String], callback: @escaping (String) -> ()) {
+        DispatchQueue.global().async {
+            var bigOutputString: String = ""
 
-            DispatchQueue.main.async {
-                // End of the Process, give feedback to the user.
-                let process = PROCESS_QUEUE.removeValue(forKey: identifier)
-                process?.terminate()
-                callback(bigOutputString)
+            handleRustup(tool, channel, args) {
+                bigOutputString.append($0)
+            } finally: { _ in
+                DispatchQueue.main.async {
+                    callback(bigOutputString)
+                }
             }
         }
     }

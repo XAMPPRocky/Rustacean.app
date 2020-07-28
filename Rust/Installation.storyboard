@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="YtH-NG-oJQ">
+            <objects>
+                <windowController storyboardIdentifier="InstallWindow" id="xoC-or-RwV" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="If0-PC-6DZ">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="528" y="300" width="500" height="175"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <value key="maxSize" type="size" width="500" height="175"/>
+                        <connections>
+                            <outlet property="delegate" destination="xoC-or-RwV" id="43u-lv-aZA"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="wxg-SW-vTD" kind="relationship" relationship="window.shadowedContentViewController" id="lRp-ZF-CLK"/>
+                    </connections>
+                </windowController>
+                <customObject id="ieL-oY-slb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265" y="-152"/>
+        </scene>
+        <!--Installation Controller-->
+        <scene sceneID="Vxa-z0-USZ">
+            <objects>
+                <viewController id="wxg-SW-vTD" customClass="InstallationController" customModule="Rust" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="byN-CB-vtK">
+                        <rect key="frame" x="0.0" y="0.0" width="491" height="387"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QyM-jl-ni6">
+                                <rect key="frame" x="20" y="311" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QyM-jl-ni6" secondAttribute="height" multiplier="1:1" id="6ze-FE-Q30"/>
+                                    <constraint firstAttribute="width" constant="56" id="c2P-kb-vYX"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="Lj6-2t-n2z"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="vZt-SJ-EGA">
+                                <rect key="frame" x="82" y="311" width="391" height="56"/>
+                                <textFieldCell key="cell" alignment="justified" id="fY1-rD-7An">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Welcome to Rust! It seems you don't have any existing Rust installation. You can configure what you want or proceed with the default, and the latest version of Rust will be installed.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DZK-S3-Sar">
+                                <rect key="frame" x="20" y="20" width="451" height="283"/>
+                                <subviews>
+                                    <stackView distribution="equalCentering" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g8A-Ra-p2w">
+                                        <rect key="frame" x="68" y="29" width="383" height="254"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-Fs-btb">
+                                                <rect key="frame" x="0.0" y="233" width="383" height="21"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uGC-Fe-sGf">
+                                                        <rect key="frame" x="-2" y="3" width="123" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Installation Profile" id="zyP-Li-jKM">
+                                                            <font key="font" metaFont="systemBold"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bbn-oL-Gtc">
+                                                        <rect key="frame" x="121" y="-3" width="265" height="25"/>
+                                                        <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Max-WW-T9I" id="rEx-FF-dqQ">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" id="T9p-GE-99Z">
+                                                                <items>
+                                                                    <menuItem title="Minimal (-docs, -rustfmt, -clippy)" identifier="minimal" id="htH-Ck-qSF"/>
+                                                                    <menuItem title="Default" state="on" identifier="default" id="Max-WW-T9I"/>
+                                                                    <menuItem title="Complete (+miri, +rls, +rust-analysis)" identifier="complete" id="hi4-0C-1Bg"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                    </popUpButton>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lxl-wS-H6K">
+                                                <rect key="frame" x="-2" y="-2" width="233" height="18"/>
+                                                <buttonCell key="cell" type="check" title="Add Rust to your path environment" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ACm-WL-0Ez">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <scrollView hidden="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3a-N6-yLx">
+                                        <rect key="frame" x="0.0" y="90" width="450" height="193"/>
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="jKP-sU-JcZ">
+                                            <rect key="frame" x="1" y="1" width="448" height="191"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Z6v-D0-0gz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="448" height="191"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="448" height="191"/>
+                                                    <size key="maxSize" width="451" height="10000000"/>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="o3a-N6-yLx" secondAttribute="height" multiplier="21:9" id="kcf-jd-a9t"/>
+                                            <constraint firstAttribute="height" constant="193" id="qXa-ND-LbD"/>
+                                        </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="SQc-H5-9Xv">
+                                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="hkC-gP-ekQ">
+                                            <rect key="frame" x="433" y="1" width="16" height="191"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mTQ-cZ-d6w">
+                                        <rect key="frame" x="327" y="0.0" width="124" height="21"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="680-5V-VPp">
+                                                <rect key="frame" x="-6" y="-7" width="66" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0HG-1y-qn5">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="quit:" target="wxg-SW-vTD" id="Upo-Qo-Zdd"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xg1-WC-wHl">
+                                                <rect key="frame" x="54" y="-7" width="76" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XXY-rJ-MHL">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="installRustup:" target="wxg-SW-vTD" id="o4v-1h-HEI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="680-5V-VPp" secondAttribute="bottom" id="2x4-Ru-yzp"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="DZK-S3-Sar" firstAttribute="trailing" secondItem="vZt-SJ-EGA" secondAttribute="trailing" id="GPf-FZ-fjf"/>
+                            <constraint firstItem="QyM-jl-ni6" firstAttribute="leading" secondItem="byN-CB-vtK" secondAttribute="leading" constant="20" symbolic="YES" id="MRu-hk-nRN"/>
+                            <constraint firstItem="vZt-SJ-EGA" firstAttribute="top" secondItem="byN-CB-vtK" secondAttribute="top" constant="20" symbolic="YES" id="N3m-tY-4V3"/>
+                            <constraint firstItem="QyM-jl-ni6" firstAttribute="bottom" secondItem="vZt-SJ-EGA" secondAttribute="bottom" id="Pe4-jp-L3G"/>
+                            <constraint firstAttribute="bottom" secondItem="DZK-S3-Sar" secondAttribute="bottom" constant="20" symbolic="YES" id="TKZ-on-FUh"/>
+                            <constraint firstItem="vZt-SJ-EGA" firstAttribute="leading" secondItem="QyM-jl-ni6" secondAttribute="trailing" constant="8" symbolic="YES" id="TvB-Q7-n4u"/>
+                            <constraint firstItem="vZt-SJ-EGA" firstAttribute="top" secondItem="QyM-jl-ni6" secondAttribute="top" id="c1Z-WJ-I3D"/>
+                            <constraint firstItem="DZK-S3-Sar" firstAttribute="top" secondItem="vZt-SJ-EGA" secondAttribute="bottom" constant="8" symbolic="YES" id="rqT-Wp-kL3"/>
+                            <constraint firstAttribute="trailing" secondItem="vZt-SJ-EGA" secondAttribute="trailing" constant="20" symbolic="YES" id="uHS-kj-1H8"/>
+                            <constraint firstItem="DZK-S3-Sar" firstAttribute="leading" secondItem="QyM-jl-ni6" secondAttribute="leading" id="ucB-lR-Kqx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="environmentCheckbox" destination="lxl-wS-H6K" id="CRK-yf-4pl"/>
+                        <outlet property="installButton" destination="xg1-WC-wHl" id="BCb-B4-ejL"/>
+                        <outlet property="installOptionStackView" destination="g8A-Ra-p2w" id="lRs-7H-Es4"/>
+                        <outlet property="installOutput" destination="Z6v-D0-0gz" id="nLX-Bb-MeF"/>
+                        <outlet property="installScrollView" destination="o3a-N6-yLx" id="y3m-gt-sEG"/>
+                        <outlet property="profileButton" destination="Bbn-oL-Gtc" id="Uyg-KL-nGO"/>
+                    </connections>
+                </viewController>
+                <customObject id="tuG-pk-BsP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265.5" y="212"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
+    </resources>
+</document>

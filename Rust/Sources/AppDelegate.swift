@@ -9,12 +9,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         #if !DEBUG
-        AppMover.moveIfNecessary()
+            AppMover.moveIfNecessary()
         #endif
-        try! Rustup.initialise()
-        
-        self.menu = TaskBar()
-        //SpotlightDocumentation.generateDocumentationSpotlight()
+
+        if Rustup.isPresent() {
+            self.menu = TaskBar()
+        } else {
+            if let window = AppDelegate.preferencesWindow {
+                window.showWindow(self)
+                return
+            }
+            
+            NSApp.activate(ignoringOtherApps: true)
+            let storyboard = NSStoryboard(name: "Installation", bundle: nil)
+            let controller = (storyboard.instantiateController(withIdentifier: "InstallWindow") as! NSWindowController)
+            controller.window?.title = "Rust"
+            controller.window?.center()
+            controller.window?.collectionBehavior = .moveToActiveSpace
+            controller.window?.makeKeyAndOrderFront(nil)
+            controller.window?.orderFrontRegardless()
+            
+            AppDelegate.preferencesWindow = controller
+            AppDelegate.preferencesWindow!.showWindow(self)
+        }
+
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

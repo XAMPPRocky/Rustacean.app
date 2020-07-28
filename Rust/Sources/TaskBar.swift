@@ -44,14 +44,16 @@ class TaskBar {
     @objc func setToolchainNightly() { setToolchainChannel(.nightly) }
 
     @objc func setToolchainChannel(_ channel: ToolchainChannel) {
-        Rustup.set(channel: channel)
-        resetChannelState()
-        statusItem.menu?.item(withTag: channel.menuTag)?.state = .on
+        Rustup.set(channel: channel) {
+            _ in
+            self.resetChannelState()
+            self.statusItem.menu!.item(withTitle: channel.description)?.state = .on
+        }
     }
 
     func resetChannelState() {
         for channel in ToolchainChannel.all {
-            statusItem.menu?.item(withTag: channel.menuTag)?.state = .off
+            statusItem.menu!.item(withTitle: channel.description)?.state = .off
         }
     }
     
@@ -76,7 +78,7 @@ class TaskBar {
         
         // menu.addItem(NSMenuItem(title: "New Project...", action: nil, keyEquivalent: ""))
         // menu.addItem(NSMenuItem(title: "Open Project...", action: nil, keyEquivalent: ""))
-        // menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(createDocumentationMenu())
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Channel", action: nil, keyEquivalent: ""))

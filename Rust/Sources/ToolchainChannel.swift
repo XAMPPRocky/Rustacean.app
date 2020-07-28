@@ -37,18 +37,7 @@ import AppKit
         case .beta:
             return "b"
         case .nightly:
-            return "n"
-        }
-    }
-    
-    var menuTag: Int {
-        switch self {
-        case .stable:
-            return 10
-        case .beta:
-            return 20
-        case .nightly:
-            return 30
+            return "t"
         }
     }
 }

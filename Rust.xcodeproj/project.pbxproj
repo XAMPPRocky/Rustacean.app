@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E513112B24CED5AC0040428D /* InstallationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E513112A24CED5AC0040428D /* InstallationController.swift */; };
 		E53069DE241540F600809ADD /* LaunchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53069DD241540F600809ADD /* LaunchWindow.swift */; };
 		E55CD257243A5FB100FC5252 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E55CD256243A5FB100FC5252 /* Alamofire */; };
 		E55CD25B243A769700FC5252 /* NewProjects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55CD25A243A769700FC5252 /* NewProjects.storyboard */; };
@@ -52,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E513112A24CED5AC0040428D /* InstallationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationController.swift; sourceTree = "<group>"; };
 		E53069DD241540F600809ADD /* LaunchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindow.swift; sourceTree = "<group>"; };
 		E55CD25A243A769700FC5252 /* NewProjects.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProjects.storyboard; sourceTree = "<group>"; };
 		E56C9E3D243C038500B19471 /* SpotlightDocumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightDocumentation.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				E58A1A34240D592000367963 /* ToolchainChannel.swift */,
 				E56C9E3D243C038500B19471 /* SpotlightDocumentation.swift */,
 				E57C1EC824BEE8A90074CE11 /* Process.swift */,
+				E513112A24CED5AC0040428D /* InstallationController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				E5730ED024393B0800B1A10D /* TaskBar.swift in Sources */,
 				E57889142416935E00633D12 /* LaunchController.swift in Sources */,
 				E5A6735A240C758D002B8301 /* AppDelegate.swift in Sources */,
+				E513112B24CED5AC0040428D /* InstallationController.swift in Sources */,
 				E53069DE241540F600809ADD /* LaunchWindow.swift in Sources */,
 				E5788916241693CF00633D12 /* Rustup.swift in Sources */,
 				E58A1A35240D592000367963 /* ToolchainChannel.swift in Sources */,
