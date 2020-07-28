@@ -19,14 +19,23 @@ class TaskBar {
 
     // MARK: Logo
     func createLogo() {
+        let size = 22
+        
         let logo = NSImage(named: NSImage.Name("status-logo"))!
+        let logoInvert = NSImage(named: NSImage.Name("status-logo-inverted"))!
 
-        let resizedLogo = NSImage(size: NSSize(width: 22, height: 22), flipped: false) { (dstRect) -> Bool in
+        let resizedLogo = NSImage(size: NSSize(width: size, height: size), flipped: false) { (dstRect) -> Bool in
             logo.draw(in: dstRect)
+            return true
+        }
+        
+        let resizedLogoInvert = NSImage(size: NSSize(width: size, height: size), flipped: false) { (dstRect) -> Bool in
+            logoInvert.draw(in: dstRect)
             return true
         }
 
         statusItem.button!.image = resizedLogo
+        statusItem.button?.alternateImage = resizedLogoInvert
     }
 
     // MARK: Channels
