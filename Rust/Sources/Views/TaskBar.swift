@@ -35,7 +35,7 @@ class TaskBar {
         }
 
         statusItem.button!.image = resizedLogo
-        statusItem.button?.alternateImage = resizedLogoInvert
+        statusItem.button!.alternateImage = resizedLogoInvert
     }
 
     // MARK: Channels
