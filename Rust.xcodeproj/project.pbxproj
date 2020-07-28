@@ -116,8 +116,9 @@
 				E5A67359240C758D002B8301 /* AppDelegate.swift */,
 				E56C9E3D243C038500B19471 /* SpotlightDocumentation.swift */,
 				E57C1EC824BEE8A90074CE11 /* Process.swift */,
-				E513112F24D0333B0040428D /* Views */,
+				E57C1EB924BDEC540074CE11 /* AppMover */,
 				E513112E24D033220040428D /* Rust */,
+				E513112F24D0333B0040428D /* Views */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -167,7 +168,6 @@
 		E5A67358240C758D002B8301 /* Rust */ = {
 			isa = PBXGroup;
 			children = (
-				E57C1EB924BDEC540074CE11 /* AppMover */,
 				E513112D24D032490040428D /* Storyboards */,
 				E55CD2542439EE2B00FC5252 /* Sources */,
 				E5A6735D240C7590002B8301 /* Assets.xcassets */,
