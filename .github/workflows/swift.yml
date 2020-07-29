@@ -11,6 +11,10 @@ jobs:
     - uses: actions/checkout@v2
     # Hack around XCode 11 issue
     - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
+    - uses: yakuhzi/action-ssh-agent@v1
+      with:
+        public: ${{ secrets.SSH_PUBLIC_KEY }}
+        private: ${{ secrets.SSH_PRIVATE_KEY }}
     - uses: sersoft-gmbh/xcodebuild-action@v1
       with:
         project: Rust.xcodeproj
