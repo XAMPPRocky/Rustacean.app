@@ -54,7 +54,6 @@ class TaskBar {
 
     @objc func setToolchainChannel(_ channel: ToolchainChannel) {
         Rustup.set(channel: channel) {
-            _ in
             self.resetChannelState()
             self.statusItem.menu!.item(withTitle: channel.description)?.state = .on
         }

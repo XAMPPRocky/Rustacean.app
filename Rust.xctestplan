@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "9DCD4EA5-A6EF-4E50-9F38-6E607DF93506",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Rust.xcodeproj",
+      "identifier" : "E5A67355240C758D002B8301",
+      "name" : "Rust"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

@@ -41,6 +41,7 @@
 /* Begin PBXFileReference section */
 		E513112A24CED5AC0040428D /* InstallationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationController.swift; sourceTree = "<group>"; };
 		E522480A24D06C1900A353C7 /* dummy.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dummy.rs; sourceTree = "<group>"; };
+		E522480F24D1782300A353C7 /* Rust.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rust.xctestplan; sourceTree = "<group>"; };
 		E53069DD241540F600809ADD /* LaunchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindow.swift; sourceTree = "<group>"; };
 		E56C9E3D243C038500B19471 /* SpotlightDocumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightDocumentation.swift; sourceTree = "<group>"; };
 		E5730ECF24393B0800B1A10D /* TaskBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBar.swift; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 		E5A6734D240C758D002B8301 = {
 			isa = PBXGroup;
 			children = (
+				E522480F24D1782300A353C7 /* Rust.xctestplan */,
 				E5A67358240C758D002B8301 /* Rust */,
 				E5A67357240C758D002B8301 /* Products */,
 				E58F8F0524BC8031003BCB2A /* Frameworks */,

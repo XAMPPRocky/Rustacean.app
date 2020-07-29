@@ -2,10 +2,10 @@ import Foundation
 import Toml
 
 enum InstallProfile {
-   case Minimal
-   case Default
-   case Complete
-   
+    case Minimal
+    case Default
+    case Complete
+
     /// Create install profile from string if matches.
     init?(string: String) {
         switch string {
@@ -19,7 +19,7 @@ enum InstallProfile {
             return nil
         }
     }
-    
+
     var description: String {
         switch self {
         case .Minimal:
@@ -34,44 +34,44 @@ enum InstallProfile {
 
 // MARK: Rustup
 class Rustup {
-    
+
     static func output(_ channel: ToolchainChannel?, _ args: [String], callback: @escaping (String) -> ()) {
         Process.outputRustup(nil, channel, args, callback: callback)
     }
-    
+
     static func output(_ args: [String], callback: @escaping (String) -> ()) {
         Process.outputRustup(nil, nil, args, callback: callback)
     }
-    
+
     static func syncOutput(_ channel: ToolchainChannel?, _ args: [String]) throws -> String {
         return try Process.syncRustup(nil, channel, args)
     }
-    
+
     static func syncOutput(_ args: [String]) throws -> String {
         return try syncOutput(nil, args)
     }
 
     static func initialise(profile: InstallProfile, noModifyPath: Bool, handler: @escaping (String) -> (), finally: @escaping (Int32) -> ()) throws {
         var args = ["-y"]
-        
+
         args.append("--profile")
         args.append(profile.description)
-        
+
         if noModifyPath {
             args.append("--no-modify-path")
         }
-        
+
         Process.handleRustup("rustup-init", nil, args, handler: handler, finally: finally)
     }
-    
+
     static func isPresent() -> Bool {
         return (try? syncOutput(["-h"])) != nil
     }
-    
+
     static func getSettings() throws -> Toml? {
         return try? Toml(withString: String(contentsOf: appDir().appendingPathComponent("settings.toml")))
     }
-    
+
     // MARK: Channel
 
     /// Returns the currently set channel from rustup.
@@ -88,8 +88,49 @@ class Rustup {
         }
     }
 
-    static func set(channel: ToolchainChannel, _ callback: @escaping (String) -> ()) {
-        Rustup.output(channel, ["default", "\(channel.slug)"], callback: callback)
+    static func set(channel: ToolchainChannel, _ callback: @escaping () -> ()) {
+        switch has_new_version(channel) {
+        case .upToDate, .newVersion(_):
+            Rustup.output(channel, ["default", "\(channel.slug)"]) { _ in callback() }
+        case .notFound:
+            let notification = NSUserNotification()
+            notification.title = "Downloading \(channel.slug) toolchain…"
+            notification.subtitle = "No existing toolchain found."
+            notification.soundName = NSUserNotificationDefaultSoundName
+            NSUserNotificationCenter.default.deliver(notification)
+            Rustup.output(channel, ["default", "\(channel.slug)"]) {
+                output in
+
+                let notification = NSUserNotification()
+                notification.title = "Downloaded \(channel.description) toolchain."
+                notification.soundName = NSUserNotificationDefaultSoundName
+                NSUserNotificationCenter.default.deliver(notification)
+                
+                callback()
+            }
+        }
+    }
+
+    /// The different states a toolchain can be in terms of whether
+    enum VersionStatus {
+        case newVersion(String)
+        case upToDate
+        case notFound
+    }
+    
+    fileprivate static let updateRegex = try! NSRegularExpression.init(pattern: "Update available.*-> (\\d+.\\d+.\\d+)", options: [])
+    static func has_new_version(_ channel: ToolchainChannel) -> VersionStatus {
+        let output = try! Rustup.syncOutput(["check"])
+
+        if let line = output.split(whereSeparator: \.isNewline).filter({ $0.contains(channel.slug) }).first {
+            if let match = updateRegex.firstMatch(in: String(line), options: [], range: .init(location: 0, length: line.lengthOfBytes(using: .utf8))) {
+                return .newVersion((output as NSString).substring(with: match.range(at: 1)))
+            } else {
+                return .upToDate
+            }
+        }
+
+        return .notFound
     }
 
     // MARK: Target
@@ -106,7 +147,7 @@ class Rustup {
     static func targets(_ channel: ToolchainChannel?, _ callback: @escaping ([Target]) -> ()) {
         Rustup.output(channel, ["target", "list"]) {
             output in
-            
+
             var targets: [Target] = []
 
             for line in output.components(separatedBy: .newlines) {
@@ -138,15 +179,15 @@ class Rustc {
     static func output(_ channel: ToolchainChannel?, _ args: [String], callback: @escaping (String) -> ()) {
         Process.outputRustup("rustc", channel, args, callback: callback)
     }
-    
+
     static func output(_ args: [String], callback: @escaping (String) -> ()) {
         output(nil, args, callback: callback)
     }
-    
+
     static func syncOutput(_ channel: ToolchainChannel?, _ args: [String]) throws -> String {
         return try Process.syncRustup("rustc", channel, args)
     }
-    
+
     static func syncOutput(_ args: [String]) throws -> String {
         return try syncOutput(nil, args)
     }
@@ -171,15 +212,15 @@ class Cargo {
     static func output(_ channel: ToolchainChannel?, _ args: [String], callback: @escaping (String) -> ()) {
         Process.outputRustup("cargo", channel, args, callback: callback)
     }
-    
+
     static func output(_ args: [String], callback: @escaping (String) -> ()) {
         output(nil, args, callback: callback)
     }
-    
+
     static func syncOutput(_ channel: ToolchainChannel?, _ args: [String]) throws -> String {
         return try Process.syncRustup("cargo", channel, args)
     }
-    
+
     static func syncOutput(_ args: [String]) throws -> String {
         return try syncOutput(nil, args)
     }
@@ -197,7 +238,7 @@ class Cargo {
 
         return (output as NSString).substring(with: match.range(at: 0))
     }
-    
+
     static func create(_ url: URL) throws {
         _ = try! syncOutput(["init", url.path])
     }
