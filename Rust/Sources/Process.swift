@@ -81,7 +81,9 @@ extension Process {
         try! process.run()
 
         let output = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!
-        print(output)
+        #if DEBUG
+            print(output)
+        #endif
         return output
     }
 }
