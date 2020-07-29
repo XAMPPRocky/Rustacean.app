@@ -13,8 +13,8 @@ jobs:
     - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
     - uses: yakuhzi/action-ssh-agent@v1
       with:
-        public-ssh-key: ${{ secrets.SSH_PUBLIC_KEY }}
-        private-ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-public-key: ${{ secrets.SSH_PUBLIC_KEY }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - uses: sersoft-gmbh/xcodebuild-action@v1
       with:
         project: Rust.xcodeproj
