@@ -27,7 +27,7 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Licenced under APACHE 2.0 OR MIT.</string>
+	<string>Erin Power 2020 all rights reserved</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Launch</string>
 	<key>NSPrincipalClass</key>
