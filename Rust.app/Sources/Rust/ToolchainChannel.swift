@@ -22,7 +22,7 @@ import AppKit
     var description: String {
         switch self {
         case .stable:
-            return "Stable (\(Rustc.version(.stable)))"
+            return "Stable (\(Rustc.version(.stable) ?? "???"))"
         case .beta:
             return "Beta"
         case .nightly:

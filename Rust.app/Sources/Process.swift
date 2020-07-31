@@ -76,10 +76,17 @@ extension Process {
     }
 
     static func syncRustup(_ tool: String? = "rustup", _ channel: ToolchainChannel?, _ args: [String]) throws -> String {
+        enum Err: Error {
+            case error(String)
+        }
         let pipe = Pipe()
         let process = launchProcess(tool: tool, channel: channel, args: args, pipe: pipe)
         try! process.run()
-
+        process.waitUntilExit()
+        if process.terminationStatus != 0 {
+            throw Err.error("Not Found")
+        }
+        
         let output = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!
         #if DEBUG
             print(output)

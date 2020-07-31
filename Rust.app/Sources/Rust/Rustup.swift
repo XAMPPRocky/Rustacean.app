@@ -65,7 +65,7 @@ class Rustup {
     }
 
     static func isPresent() -> Bool {
-        return (try? syncOutput(["-h"])) != nil
+        return (try? syncOutput(["-V"])) != nil
     }
 
     static func getSettings() throws -> Toml? {
@@ -194,12 +194,15 @@ class Rustc {
 
     // MARK: Version
     /// Get current version number from the environment
-    static func version() -> String {
+    static func version() -> String? {
         return version(nil)
     }
     /// Return the current version of a specific toolchain, or using the currently set toolchain if `nil`.
-    static func version(_ channel: ToolchainChannel?) -> String {
-        let output = try! syncOutput(channel, ["-V"])
+    static func version(_ channel: ToolchainChannel?) -> String? {
+        guard let output = try? syncOutput(channel, ["-V"]) else {
+            return nil
+        }
+        
         let regex = try! NSRegularExpression.init(pattern: "(\\d+.\\d+.\\d+)", options: [])
         let match = regex.firstMatch(in: output, options: [], range: .init(location: 0, length: output.lengthOfBytes(using: .utf8)))!
 
