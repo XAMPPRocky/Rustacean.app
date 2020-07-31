@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.activate(ignoringOtherApps: true)
             let storyboard = NSStoryboard(name: "Installation", bundle: nil)
             let controller = (storyboard.instantiateController(withIdentifier: "InstallWindow") as! NSWindowController)
-            controller.window?.title = "Rust"
+            controller.window?.title = "Rust.app"
             controller.window?.center()
             controller.window?.collectionBehavior = .moveToActiveSpace
             controller.window?.makeKeyAndOrderFront(nil)

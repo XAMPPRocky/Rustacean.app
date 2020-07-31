@@ -31,7 +31,7 @@
         <!--Installation Controller-->
         <scene sceneID="Vxa-z0-USZ">
             <objects>
-                <viewController id="wxg-SW-vTD" customClass="InstallationController" customModule="Rust" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wxg-SW-vTD" customClass="InstallationController" customModule="Rust_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="byN-CB-vtK">
                         <rect key="frame" x="0.0" y="0.0" width="491" height="387"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,13 +42,13 @@
                                     <constraint firstAttribute="width" secondItem="QyM-jl-ni6" secondAttribute="height" multiplier="1:1" id="6ze-FE-Q30"/>
                                     <constraint firstAttribute="width" constant="56" id="c2P-kb-vYX"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="Lj6-2t-n2z"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ferris" id="Lj6-2t-n2z"/>
                             </imageView>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="vZt-SJ-EGA">
                                 <rect key="frame" x="82" y="311" width="391" height="56"/>
                                 <textFieldCell key="cell" alignment="justified" id="fY1-rD-7An">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">Welcome to Rust! It seems you don't have any existing Rust installation. You can configure what you want or proceed with the default, and the latest version of Rust will be installed.</string>
+                                    <string key="title">Welcome to Rust.app! It seems you don't have any existing Rust.app installation. You can configure what you want or proceed with the default, and the latest version of Rust.app will be installed.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -95,8 +95,8 @@
                                                 </customSpacing>
                                             </stackView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lxl-wS-H6K">
-                                                <rect key="frame" x="-2" y="-2" width="233" height="18"/>
-                                                <buttonCell key="cell" type="check" title="Add Rust to your path environment" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ACm-WL-0Ez">
+                                                <rect key="frame" x="-2" y="-2" width="260" height="18"/>
+                                                <buttonCell key="cell" type="check" title="Add Rust.app to your path environment" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ACm-WL-0Ez">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -221,6 +221,6 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="NSApplicationIcon" width="32" height="32"/>
+        <image name="ferris" width="1200" height="800"/>
     </resources>
 </document>
