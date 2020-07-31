@@ -14,6 +14,10 @@ experience for Rust as well as some handy developer utilities through its status
     automatically detect when it can reach `doc.rust-lang.org` and open a local
     version instead.
 
+## Platform Support
+
+- macOS 10.15+
+
 ## Screenshots
 
 ![Installation Wizard](./Screenshots/install-menu.png)
