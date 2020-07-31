@@ -11,6 +11,8 @@
 		E522480B24D06C1900A353C7 /* dummy.rs in Resources */ = {isa = PBXBuildFile; fileRef = E522480A24D06C1900A353C7 /* dummy.rs */; };
 		E522480E24D1771100A353C7 /* Toml in Frameworks */ = {isa = PBXBuildFile; productRef = E522480D24D1771100A353C7 /* Toml */; };
 		E53069DE241540F600809ADD /* LaunchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53069DD241540F600809ADD /* LaunchWindow.swift */; };
+		E53AC42724D45B7300B536FD /* AppMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C1EBC24BDEC540074CE11 /* AppMover.swift */; };
+		E53AC42824D45B7600B536FD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57C1EBA24BDEC540074CE11 /* Extensions.swift */; };
 		E55CD257243A5FB100FC5252 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E55CD256243A5FB100FC5252 /* Alamofire */; };
 		E566510A24D41A0900C693F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E566510924D41A0900C693F4 /* AppDelegate.swift */; };
 		E566511124D41A0B00C693F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E566511024D41A0B00C693F4 /* Preview Assets.xcassets */; };
@@ -409,9 +411,11 @@
 				E57889142416935E00633D12 /* LaunchController.swift in Sources */,
 				E5A6735A240C758D002B8301 /* AppDelegate.swift in Sources */,
 				E513112B24CED5AC0040428D /* InstallationController.swift in Sources */,
+				E53AC42724D45B7300B536FD /* AppMover.swift in Sources */,
 				E53069DE241540F600809ADD /* LaunchWindow.swift in Sources */,
 				E5788916241693CF00633D12 /* Rustup.swift in Sources */,
 				E58A1A35240D592000367963 /* ToolchainChannel.swift in Sources */,
+				E53AC42824D45B7600B536FD /* Extensions.swift in Sources */,
 				E57C1EC924BEE8A90074CE11 /* Process.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

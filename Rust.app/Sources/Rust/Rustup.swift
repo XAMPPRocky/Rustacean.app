@@ -249,7 +249,7 @@ class Cargo {
 
 // MARK: URL Location Functions
 
-func rustupUrl() -> URL {
+func rustupInitUrl() -> URL {
     return Bundle.main.url(forResource: "rustup", withExtension: nil)!
 }
 
@@ -257,6 +257,12 @@ func rustcUrl() -> URL {
     return cargoHome()
         .appendingPathComponent("bin", isDirectory: true)
         .appendingPathComponent("rustc", isDirectory: false)
+}
+
+func rustupUrl() -> URL {
+    return cargoHome()
+        .appendingPathComponent("bin", isDirectory: true)
+        .appendingPathComponent("rustup", isDirectory: false)
 }
 
 func cargoUrl() -> URL {

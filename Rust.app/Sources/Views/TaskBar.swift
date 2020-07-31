@@ -192,24 +192,6 @@ class TaskBar {
             Rustup.output(["doc", "--\(resource)"]) { _ in }
         }
     }
-
-    // MARK: Show Preferences
-    @objc func showPreferences() {
-        if let window = AppDelegate.preferencesWindow {
-            window.showWindow(self)
-            return
-        }
-        NSApp.activate(ignoringOtherApps: true)
-        let storyboard = NSStoryboard(name: "Launch", bundle: nil)
-        AppDelegate.preferencesWindow = (storyboard.instantiateController(withIdentifier: "preferencesWindow") as! NSWindowController)
-        AppDelegate.preferencesWindow?.window?.title = "Rust"
-        AppDelegate.preferencesWindow?.window?.center()
-        AppDelegate.preferencesWindow?.window?.collectionBehavior = .moveToActiveSpace
-        AppDelegate.preferencesWindow!.window?.makeKeyAndOrderFront(nil)
-        AppDelegate.preferencesWindow?.window?.orderFrontRegardless()
-
-        AppDelegate.preferencesWindow!.showWindow(self)
-    }
     
     @objc func clearCache() {
         UserDefaults.standard.removeObject(forKey: RECENTLY_OPENED)

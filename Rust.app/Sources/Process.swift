@@ -16,6 +16,8 @@ fileprivate func launchProcess(tool: String? = "rustup", channel: ToolchainChann
 
     let url: URL!
     switch tool {
+    case .some("rustup-init"):
+        url =  rustupInitUrl()
     case .some("rustc"):
         url =  rustcUrl()
         break
@@ -81,7 +83,7 @@ extension Process {
         }
         let pipe = Pipe()
         let process = launchProcess(tool: tool, channel: channel, args: args, pipe: pipe)
-        try! process.run()
+        try process.run()
         process.waitUntilExit()
         if process.terminationStatus != 0 {
             throw Err.error("Not Found")

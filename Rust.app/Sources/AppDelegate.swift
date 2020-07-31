@@ -10,7 +10,7 @@ extension Notification.Name {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    static var preferencesWindow: NSWindowController? = nil
+    static var installWindow: NSWindowController? = nil
     var menu: TaskBar? = nil
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.menu = TaskBar()
             }
         } else {
-            if let window = AppDelegate.preferencesWindow {
+            if let window = AppDelegate.installWindow {
                 window.showWindow(self)
                 return
             }
@@ -42,8 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             controller.window?.makeKeyAndOrderFront(nil)
             controller.window?.orderFrontRegardless()
 
-            AppDelegate.preferencesWindow = controller
-            AppDelegate.preferencesWindow!.showWindow(self)
+            AppDelegate.installWindow = controller
+            AppDelegate.installWindow!.showWindow(self)
         }
 
     }
