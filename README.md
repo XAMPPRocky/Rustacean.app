@@ -10,3 +10,10 @@ for Rust as well as some handy developer utilities through its statusbar menu.
   only to be in a spotty connection and not be able to open the docs? Rust.app will
   automatically detect when it can reach `doc.rust-lang.org` and open a local
   version instead.
+
+## Screenshots
+
+![Installation Wizard](./Screenshots/install-menu.png)
+
+
+![Status Bar](./Screenshots/statusbar.png)
