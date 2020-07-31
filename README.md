@@ -2,6 +2,8 @@
 Rust.app is a **unofficial** statusbar app for Rust & macOS. It provides an easy installation
 experience for Rust as well as some handy developer utilities through its statusbar menu.
 
+**Platform Support:** macOS 10.15+
+
 ## Features
 
 - **Easy Installation** — Installing Rust now just as easy as any other macOS app.
@@ -13,10 +15,6 @@ experience for Rust as well as some handy developer utilities through its status
     only to be in a spotty connection and not be able to open the docs? Rust.app will
     automatically detect when it can reach `doc.rust-lang.org` and open a local
     version instead.
-
-## Platform Support
-
-- macOS 10.15+
 
 ## Screenshots
 
